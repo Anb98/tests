@@ -1,28 +1,16 @@
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const { port } = require('./config/general');
+const usuarioRoutes = require('./routes/usuario.route');
 
-const UsuarioCtrl = require('./controllers/usuario.ctrl');
 
 app.use(bodyParser.urlencoded({ extended:false }));
 app.use(bodyParser.json());
 
-app.get('/usuario', UsuarioCtrl.index);
-app.get('/usuario/:id', UsuarioCtrl.show);
-app.post('/usuario', UsuarioCtrl.create);
-
-// app.put('/comentarios', (req, res, next)=>{
-// 	if(isAuth()){
-// 		next();
-// 	}
-// 	else{
-// 		res.status(401).json({message: 'unauthorized'});
-// 	}
-// }, 
-// (req, res)=>{
-
-// });
+app.use('/usuario', usuarioRoutes);
 
 
 app.listen(port, ()=>{

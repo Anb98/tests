@@ -8,10 +8,10 @@ module.exports = {
 	show(req, res){
 		// retorna un usuario
 
-		return res.status(200).json({ data: null});
+		return res.status(200).json({ data: {id: req.params.id, query: req.query}});
 	},
 
-	create(req, res){
+	store(req, res){
 		// retorna un usuario
 
 		return res.status(201).json({ message: 'creado correctamente'});
